@@ -1,1 +1,2 @@
-clj/
+.clj-kondo/
+.lsp/

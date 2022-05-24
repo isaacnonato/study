@@ -72,3 +72,32 @@ Since vectors are indedxed, they can be efficiently walke in either direction, l
 (rseq a-to-j)
 ;=> (\J \I \H \G \F \E \D \C \B \A)
 ```
+
+## assoc-in and update-in
+
+Any item in a vector can be changed using the `assoc` function:
+
+```clj
+(assoc a-to-j 4 "no longer E")
+;=> [\A \B \C \D "no longer E" \F \G \H \I \J]
+```
+
+This function only works for indices that already exist in the vector or are one step past the end, in this case the returned vector is one item larger than the input vector.
+
+The functions `assoc-in` and `update-in` are used for nested structures of vectors and/or maps:
+
+```clj
+(def matrix
+  [[1 2 3]
+   [4 5 6]
+   [7 8 9]])
+
+(get-in matrix [1 2])
+;=> 6
+
+(assoc-in matrix [1 2] 'x)
+;=> [[1 2 3] [4 5 x] [7 8 9]]
+
+(update-in matrix [1 2] * 100)
+;=> [[1 2 3] [4 5 600] [7 8 9]]
+```

@@ -101,3 +101,13 @@ The functions `assoc-in` and `update-in` are used for nested structures of vecto
 (update-in matrix [1 2] * 100)
 ;=> [[1 2 3] [4 5 600] [7 8 9]]
 ```
+
+## Subevectors
+
+```clj
+(subvec a-to-j 3 6)
+;=> [\D \E \F]
+```
+
+The first index given to `subvec` is inclusive, that means is _starts at_ index 3,
+while the second index is exclusive, so it ends _before_ index 6.

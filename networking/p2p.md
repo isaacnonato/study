@@ -23,3 +23,12 @@ With this information, P will have two decisions to make:
 * Which chunks should be requested first from its neighbors?
 
 * To which of its neighbors shoud it send requested chunks?
+
+The BitTorrent protocol uses a technique called __rarest first__. The idea is to determine, from among the chunks P does not have, the chunks that are rarest among its neighbors (that is, the chunks with less repetitions among them). In this way, the rarest chunks get more quickly redistributed, aiming to equalize the numbers of each chunk in the torrent.
+
+To determine which requests P responds to, BitTorrent uses a trading algorithm.
+The algorithm works so P gives priority to its neighbors that are supplying it data at the _highest rate_. Specifially, for each of its neighbors, P measures the rates at which it receives bits every 10 seconds.
+
+# To read
+
+[BitTorrent Specification](https://wiki.theory.org/BitTorrentSpecification)
